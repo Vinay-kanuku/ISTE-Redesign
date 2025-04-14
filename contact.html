@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - ISTE GRIET</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-animate {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .hover-animate:hover {
+            transform: scale(1.05);
+            color: #FF6347;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        .contact-card {
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body class="bg-black text-white overflow-x-hidden">
+    <header class="flex justify-between items-center p-4 bg-opacity-80 bg-black fixed w-full z-20">
+        <div class="flex items-center">
+            <img src="/assets/logos/iste_logo.png" alt="ISTE GRIET Logo" class="h-12 mr-3">
+            <div class="text-2xl font-bold">ISTE GRIET</div>
+        </div>
+        <nav class="space-x-4">
+            <a href="index.html#about" class="hover:text-gray-400">About</a>
+            <a href="index.html#events" class="hover:text-gray-400">Events</a>
+            <a href="team.html" class="hover:text-gray-400">Team</a>
+        </nav>
+    </header>
+
+    <main class="relative min-h-screen pt-20">
+        <canvas id="bgCanvas" class="absolute inset-0"></canvas>
+        <div class="relative z-10 container mx-auto p-8">
+            <h1 class="text-5xl font-extrabold text-center mb-12 hover-animate">Get in Touch</h1>
+
+            <!-- Contact Info & Social Links -->
+            <div class="glass-effect p-8 contact-card">
+                <h2 class="text-3xl font-bold mb-6">Contact Information</h2>
+                <p class="text-lg mb-4">We'd love to hear from you! Reach out through any of the following channels:</p>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M2.94 2.94A10 10 0 0110 0a10 10 0 017.06 17.06A10 10 0 0110 20a10 10 0 01-7.06-2.94A10 10 0 012.94 2.94zM10 18a8 8 0 005.66-13.66A8 8 0 004.34 13.66 8 8 0 0010 18zm0-12a2 2 0 100 4 2 2 0 000-4zm0 6a6 6 0 00-6 6h12a6 6 0 00-6-6z" />
+                        </svg>
+                        <span>GRIET, Hyderabad, Telangana, India</span>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M2 3a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H3a1 1 0 01-1-1V3zm2 2v10h12V5H4zm2 2h8v2H6V7zm0 4h4v2H6v-2z" />
+                        </svg>
+                        <a href="mailto:istegriet@gmail.com" class="hover:text-gray-400">istegriet@gmail.com</a>
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-6 h-6 mr-3 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M6 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2H6zm2 3h4v2H8V5zm-1 4h6v2H7V9zm0 4h6v2H7v-2z" />
+                        </svg>
+                        <a href="tel:+919875543210" class="hover:text-gray-400">+91 98755 43210</a>
+                    </div>
+                </div>
+                <h3 class="text-2xl font-bold mt-8 mb-4">Follow Us</h3>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/istegrietsb/" target="_blank" class="hover-animate">
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.332.014 7.052.072 3.668.227 1.981 1.97 1.826 5.314.014 8.332 0 8.741 0 12c0 3.259.014 3.668.072 4.948.155 3.344 1.898 5.031 5.242 5.186 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c3.344-.155 5.031-1.842 5.186-5.186.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.155-3.344-1.842-5.031-5.186-5.186C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm4.965-10.405a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z" />
+                        </svg>
+                    </a>
+                    <a href="https://github.com/orgs/ISTE-GRIET/teams/junior-crew" target="_blank"
+                        class="hover-animate">
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/iste-griet-b5b708224/" target="_blank" class="hover-animate">
+                        <svg class="w-8 h-8 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M19 0H5a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5V5a5 5 0 00-5-5zM8 19H5V8h3v11zM6.5 6.732c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zM19 19h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5S11 12.121 11 13.5V19H8V8h3v1.378C11.673 8.549 12.774 8 14 8c2.757 0 5 2.243 5 5v6z" />
+                        </svg>
+                    </a>
+                </div>
+       
+            </div>
+        </div>
+    </main>
+
+    <footer class="p-4 bg-black text-center">
+        © 2025 ISTE GRIET. All Rights Reserved.
+    </footer>
+
+    <script>
+        // Three.js Background
+        const canvas = document.getElementById('bgCanvas');
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        const colors = [];
+        for (let i = 0; i < 5000; i++) {
+            vertices.push(
+                (Math.random() - 0.5) * 1000,
+                (Math.random() - 0.5) * 1000,
+                (Math.random() - 0.5) * 1000
+            );
+            colors.push(Math.random(), Math.random(), Math.random());
+        }
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({ size: 2, vertexColors: true });
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        function animate() {
+            requestAnimationFrame(animate);
+            points.rotation.y += 0.001;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
+    </script>
+</body>
+
+</html>

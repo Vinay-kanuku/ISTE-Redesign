@@ -57,6 +57,8 @@
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
             perspective: 1200px;
+            display: flex;
+            flex-direction: column;
         }
 
         .member-card:hover {
@@ -64,16 +66,43 @@
             box-shadow: 0 20px 50px rgba(255, 255, 255, 0.1), 0 0 30px rgba(255, 255, 255, 0.05);
         }
 
-        .member-img {
+        .img-container {
             width: 100%;
             height: 220px;
-            object-fit: contain;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a1a1a;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            transition: filter 0.4s;
+        }
+
+        .member-img {
+            width: auto;
+            height: auto;
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            object-position: center;
+            transition: transform 0.4s ease, filter 0.4s;
         }
 
         .member-card:hover .member-img {
             filter: brightness(1.2) contrast(1.1);
+            transform: scale(1.05);
+        }
+
+        .placeholder-img {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #666;
         }
 
         .member-info {
@@ -81,6 +110,10 @@
             text-align: center;
             background: linear-gradient(135deg, rgba(25, 25, 25, 0.5), rgba(10, 10, 10, 0.4));
             position: relative;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .member-name {
@@ -188,7 +221,7 @@
                 gap: 25px;
             }
 
-            .member-img {
+            .img-container {
                 height: 160px;
             }
 
@@ -221,6 +254,7 @@
 
             .member-card:active .member-img {
                 filter: brightness(1.2) contrast(1.1);
+                transform: scale(1.05);
             }
         }
     </style>
@@ -235,7 +269,7 @@
         <nav class="space-x-4">
             <a href="/index.html" class="hover:text-gray-400">Home</a>
             <a href="/events.html" class="hover:text-gray-400">Events</a>
-            <a href="/contact.html" class="hover:text-gray-400">Contact</a>
+            <a href="#contact" class="hover:text-gray-400">Contact</a>
         </nav>
     </header>
 
@@ -258,29 +292,28 @@
     </main>
 
     <script>
-
-    const teamMembers = [
-        { name: "Mishwanth", position: "President", category: "AIML", image: "assets/team/mishwanth.png", linkedin: "https://www.linkedin.com/in/mishwanth-chodagam", github: "https://github.com/Mishwanth" },
-        { name: "Kaushal Kulkarni", position: "Vice President", category: "CSE", image: "assets/team/kuahsal.png", linkedin: "https://www.linkedin.com/in/kaushal-345-/", github: "https://github.com/kaushal-345" },
-        { name: "Devansh Kumar", position: "Creative Head", category: "Creative", image: "assets/team/Devansh - DEVANSH KUMAR.png", linkedin: "https://linkedin.com/in/devansh-kumar-110139260/", github: "https://github.com/Shiftscorp29" },
-        // { name: "M.S. Tahameer", position: "Member Relations Head", category: "Member", image: "assets/team/Tahameer.png", linkedin: "https://linkedin.com/in/tahameer-ms-a952271b6", github: "https://github.com/MSTahameer" },
-        // { name: "Hima Varshith Parepalli", position: "Logistics Head", category: "Logistic", image: "assets/team/Parepalli_Hima_varshith.png", linkedin: "https://www.linkedin.com/in/parepalli-himu", github: "https://github.com/himu7705" },
-        // { name: "Varsha", position: "Publicity Director", category: "IT", image: "", linkedin: "https://linkedin.com/in/varsha-katakamsetty", github: "https://github.com/Varshakatakamsetty" },
-        // { name: "Satvik Kamuni", position: "Web Master", category: "Computer Science (Data Science)", image: "", linkedin: "https://www.linkedin.com/in/satvik-kamuni", github: "https://github.com/satvikB7" },
-        // { name: "Koneru Sathvik Yuvaraj", position: "Documentation Head", category: "CSE(DS)", image: "assets/team/Sathvik_Yuvraj_Koneru.png", linkedin: "https://www.linkedin.com/in/sathvik-yuvaraj", github: "https://github.com/sathvik1511" },
-        { name: "Nehaja Jammula", position: "Documentation Head", category: "CSDS", image: "assets/team/Nehaja_Jammula.png", linkedin: "https://www.linkedin.com/in/nehaja-jammula-a79a45271/", github: "https://github.com/Nehaja13" },
-        { name: "M Prudhvi Venkata Krishna", position: "Tech Director", category: "Tech", image: "assets/team/Prudhvi_Mamillapalli.png", linkedin: "https://www.linkedin.com/in/prudhvi-mamillapalli", github: "https://www.github.com/Prudhvi-V-K" },
-        { name: "Muvva Adityavardhan", position: "Secretary", category: "CSE", image: "assets/team/Muvva_Adityavardhan.png", linkedin: "https://www.linkedin.com/in/madityavardhan/", github: "https://github.com/Muvva-Adityavardhan" },
-        { name: "Deepali Polepalli", position: "Documentation Head", category: "ECE", image: "assets/team/deepali.png", linkedin: "https://www.linkedin.com/in/deepali-polepalli-063247296", github: "https://github.com/DeepaliReddy04" },
-        { name: "Chandra Shekhar K", position: "Resource Manager", category: "Computer Science and Business Systems (CSBS)", image: "assets/team/Shekhar.png", linkedin: "https://www.linkedin.com/in/chandrashekhar06/", github: "https://github.com/chandrashekhar-01" },
-        { name: "Astuti Sinha", position: "Technical Manager", category: "Tech", image: "assets/team/aututi.png", linkedin: "https://www.linkedin.com/in/astuti-sinha-595286299/", github: "https://github.com/itsastutiii" },
-        { name: "Kopparapu Manish Sai", position: "Tech Head", category: "Tech", image: "assets/team/Kopparapu_Manish_sai.png", linkedin: "https://linkedin.com/in/kopparapu-manish-sai-833155353/", github: "https://github.com/Manish27415" },
-        { name: "Bheemreddy Poojitha", position: "Registrations Head", category: "CSE", image: "assets/team/Poojitha_Bheemreddy.png", linkedin: "https://www.linkedin.com/in/poojitha-bheemreddy", github: "https://github.com/bheemreddypoojitha" },
-        { name: "Vipul Chetan Medaboine", position: "Event Manager", category: "Management", image: "assets/team/vipul.png", linkedin: "https://www.linkedin.com/in/vipul-medaboine-4a85aa251/", github: "https://github.com/shark1038" },
-        { name: "Teja Sri Chepuri", position: "Publicity Manager", category: "IT", image: "assets/team/Teja_Sri_Chepuri.png", linkedin: "https://www.linkedin.com/in/tejasri-chepuri", github: "https://github.com/TejaSri-Chepuri" },
-        { name: "Nadipally Manish", position: "Publicity Coordinator", category: "Publicity", image: "assets/team/Nadipally_Manish.png", linkedin: "https://www.linkedin.com/in/nadipally-manish-398a17256", github: "https://github.com/NadipallyManish" }, // GitHub was missing, added placeholder based on name
-        { name: "Rohan Chadha", position: "Creative Director", category: "Creative Team", image: "assets/team/Rohan_.png", linkedin: "https://www.linkedin.com/in/rohan-chadha-5113b2280/", github: "https://github.com/rohanc2806" }
-    ];
+        const teamMembers = [
+            { name: "Mishwanth", position: "President", category: "Core", image: "assets/team/mishwanth.png", linkedin: "https://www.linkedin.com/in/mishwanth-chodagam", github: "https://github.com/Mishwanth" },
+            { name: "Kaushal Kulkarni", position: "Vice President", category: "Core", image: "assets/team/kuahsal.png", linkedin: "https://www.linkedin.com/in/kaushal-345-/", github: "https://github.com/kaushal-345" },
+            { name: "Devansh Kumar", position: "Creative Head", category: "Creative", image: "assets/team/Devansh - DEVANSH KUMAR.png", linkedin: "https://linkedin.com/in/devansh-kumar-110139260/", github: "https://github.com/Shiftscorp29" },
+            { name: "M.S. Tahameer", position: "Member Relations Head", category: "Member", image: "assets/team/Tahameer.png", linkedin: "https://linkedin.com/in/tahameer-ms-a952271b6", github: "https://github.com/MSTahameer" },
+            { name: "Hima Varshith Parepalli", position: "Logistics Head", category: "Logistic", image: "assets/team/Parepalli_Hima_varshith.png", linkedin: "https://www.linkedin.com/in/parepalli-himu", github: "https://github.com/himu7705" },
+            { name: "Varsha", position: "Publicity Director", category: "IT", image: "", linkedin: "https://linkedin.com/in/varsha-katakamsetty", github: "https://github.com/Varshakatakamsetty" },
+            { name: "Satvik Kamuni", position: "Web Master", category: "Web", image: "", linkedin: "https://www.linkedin.com/in/satvik-kamuni", github: "https://github.com/satvikB7" },
+            { name: "Koneru Sathvik Yuvaraj", position: "Documentation Head", category: "Documentation", image: "assets/team/Sathvik_Yuvraj_Koneru.png", linkedin: "https://www.linkedin.com/in/sathvik-yuvaraj", github: "https://github.com/sathvik1511" },
+            { name: "Nehaja Jammula", position: "Documentation Head", category: "Documentation", image: "assets/team/Nehaja_Jammula.png", linkedin: "https://www.linkedin.com/in/nehaja-jammula-a79a45271/", github: "https://github.com/Nehaja13" },
+            { name: "M Prudhvi Venkata Krishna", position: "Tech Director", category: "Tech", image: "assets/team/Prudhvi_Mamillapalli.png", linkedin: "https://www.linkedin.com/in/prudhvi-mamillapalli", github: "https://www.github.com/Prudhvi-V-K" },
+            { name: "Muvva Adityavardhan", position: "Secretary", category: "CSE", image: "assets/team/Muvva_Adityavardhan.png", linkedin: "https://www.linkedin.com/in/madityavardhan/", github: "https://github.com/Muvva-Adityavardhan" },
+            { name: "Deepali Polepalli", position: "Documentation Head", category: "Documentation", image: "assets/team/deepali.png", linkedin: "https://www.linkedin.com/in/deepali-polepalli-063247296", github: "https://github.com/DeepaliReddy04" },
+            { name: "Chandra Shekhar K", position: "Resource Manager", category: "Computer Science and Business Systems (CSBS)", image: "assets/team/Shekhar.png", linkedin: "https://www.linkedin.com/in/chandrashekhar06/", github: "https://github.com/chandrashekhar-01" },
+            { name: "Astuti Sinha", position: "Technical Manager", category: "Tech", image: "assets/team/aututi.png", linkedin: "https://www.linkedin.com/in/astuti-sinha-595286299/", github: "https://github.com/itsastutiii" },
+            { name: "Kopparapu Manish Sai", position: "Tech Head", category: "Tech", image: "assets/team/Kopparapu_Manish_sai.png", linkedin: "https://linkedin.com/in/kopparapu-manish-sai-833155353/", github: "https://github.com/Manish27415" },
+            { name: "Bheemreddy Poojitha", position: "Registrations Head", category: "CSE", image: "assets/team/Poojitha_Bheemreddy.png", linkedin: "https://www.linkedin.com/in/poojitha-bheemreddy", github: "https://github.com/bheemreddypoojitha" },
+            { name: "Vipul Chetan Medaboine", position: "Event Manager", category: "Management", image: "assets/team/vipul.png", linkedin: "https://www.linkedin.com/in/vipul-medaboine-4a85aa251/", github: "https://github.com/shark1038" },
+            { name: "Teja Sri Chepuri", position: "Publicity Manager", category: "Publicity", image: "assets/team/Teja_Sri_Chepuri.png", linkedin: "https://www.linkedin.com/in/tejasri-chepuri", github: "https://github.com/TejaSri-Chepuri" },
+            { name: "Nadipally Manish", position: "Publicity Coordinator", category: "Publicity", image: "assets/team/Nadipally_Manish.png", linkedin: "https://www.linkedin.com/in/nadipally-manish-398a17256", github: "https://github.com/NadipallyManish" },
+            { name: "Rohan Chadha", position: "Creative Director", category: "Creative", image: "assets/team/Rohan_.png", linkedin: "https://www.linkedin.com/in/rohan-chadha-5113b2280/", github: "https://github.com/rohanc2806" }
+        ];      
 
         const teamGrid = document.getElementById('teamGrid');
 
@@ -290,8 +323,24 @@
                 const memberCard = document.createElement('div');
                 memberCard.className = 'member-card';
                 memberCard.setAttribute('data-category', member.category);
+
+                // Create HTML content for the card
+                let imageContent = '';
+                if (member.image && member.image.trim() !== '') {
+                    // Image exists
+                    imageContent = `<div class="img-container">
+                        <img src="${member.image}" alt="${member.name}" class="member-img">
+                    </div>`;
+                } else {
+                    // No image - create a placeholder with initials
+                    const initials = member.name.split(' ').map(n => n[0]).join('');
+                    imageContent = `<div class="img-container">
+                        <div class="placeholder-img">${initials}</div>
+                    </div>`;
+                }
+
                 memberCard.innerHTML = `
-                    <img src="${member.image}" alt="${member.name}" class="member-img">
+                    ${imageContent}
                     <div class="member-info">
                         <div class="member-name">${member.name}</div>
                         <div class="member-position">${member.position}</div>
@@ -339,6 +388,16 @@
         });
 
         renderTeamMembers();
+
+        // Preload images for better user experience
+        window.addEventListener('load', function () {
+            teamMembers.forEach(member => {
+                if (member.image && member.image.trim() !== '') {
+                    const img = new Image();
+                    img.src = member.image;
+                }
+            });
+        });
 
         // Starry Background Animation
         const canvas = document.getElementById('bgCanvas');
